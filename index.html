@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    
+    <link href="https://file.myfontastic.com/n6vo44Re5QaWo8oCKShBs7/icons.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- bower:css -->
+    <!-- <link rel="stylesheet" href="/content/themes/jhu_id/bower_components/normalize-css/normalize.css"> -->
+    <link rel="stylesheet" href="fonts/gentona/gentona.css">
+    <link rel="stylesheet" href="fonts/titling-gothic/titling-gothic.css">
+    <link rel="stylesheet" href="fonts/quadon/quadon.css">
+    <link rel="stylesheet" href="fonts/arnhem/arnhem.css">
+    <!-- endbower -->
+
+    <title>Testing Network</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX", "output/HTML-CSS"],
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+      processEscapes: true
+    },
+    "HTML-CSS": { availableFonts: ["TeX"] }
+  });
+</script>
+
+    <script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML"></script>
+    <style type="text/css">
+      @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+      @import url(https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic);
+      @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+      @import url(http://fonts.googleapis.com/css?family=Varela+Round:regular,italic,bold,bolditalic);
+      @import url(http://fonts.googleapis.com/css?family=Raleway:regular,italic,bold,bolditalic);
+
+      body {
+        font-family: 'gentona'; /* Varela Round */
+      }
+      /*      h1, h2, h3, h4, h5, h6 {
+        font-family: 'quadon';
+      }      */
+      h1, h2, h3, h4, h5, h6 {
+        font-family: 'quadon';
+        font-weight: 400;
+        margin-bottom: 0;
+      }
+
+      .remark-slide-content h1 { font-size: 3em; }
+      .remark-slide-content h2 { font-size: 2em; }
+      .remark-slide-content h3 { font-size: 1.6em; }
+      .remark-slide-content h4 { font-size: 1.4em; }
+      .footnote {
+        position: absolute;
+        bottom: 3em;
+      }
+      .navbar {
+        position: absolute;
+        float: center;
+        top: 0em;
+        font-family: 'titling-gothic';  /* Yanone Kaffeesatz */
+        font-weight: 200;
+        color: #A7A7A7;
+      }
+      .navbar a {
+        color: #A7A7A7;
+      }
+      .bbar {
+        position: absolute;
+        bottom: 13px;
+        left: 13px;
+        font-family: 'titling-gothic';  /* Yanone Kaffeesatz */
+        font-weight: 200;
+        color: #A7A7A7;
+      }
+      .bbar a {
+        color: #A7A7A7;
+      }
+      .btn {
+        background: #424242;
+        height: 2em;
+      }
+      .remark-slide-content {
+        font-size: 1.5em;
+        background: #272822;
+        color: white;
+      }
+      li p { line-height: 1.25em; }
+      .r { color: #fa0000; }
+      .y { color: #FFFF00; }
+      .pink { color: #FF87F3;}
+      .orange { color: #FFA500;}
+      .g { color: #00CC00; }
+      .blue { color: #75E9FF;}
+      .purple { color: #A149A9;}
+      .large { font-size: 2em; }
+      .black { color: black; background-color: white;}
+      a, a > code {
+        color: rgb(249, 38, 114);
+        text-decoration: none;
+      }
+      code {
+        background: #424242;
+        border-radius: 5px;
+      }
+      .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+      .remark-code-line-highlighted     { background-color: #373832; }
+/*      .pull-left {
+        float: left;
+        width: 47%;
+      }*/
+      .pull-left {
+        float: left;
+        width: 47%;
+      }
+      .pull-right {
+        float: right;
+        width: 47%;
+      }
+      .center {
+        margin: auto;
+        width: 100%;
+        padding: 10px;
+      }
+      .small {
+        font-size: 0.8em;
+      }
+/*      .pull-right {
+        float: right;
+        width: 47%;
+      }*/
+      .pull-bottom {
+        position: absolute;
+        bottom: 0;
+      }
+      .bottom {
+        position: absolute;
+        bottom: 35px;
+        left: 13px;
+        font-family: 'Yanone Kaffeesatz';
+      }
+      .pull-right ~ p {
+        clear: both;
+      }
+      #slideshow .slide .content code {
+        font-size: 0.8em;
+      }
+      #slideshow .slide .content pre code {
+        font-size: 0.9em;
+        padding: 15px;
+      }
+      .inverse {
+        background: white;
+        color: white;
+        text-shadow: 0 0 20px #333;
+      }
+      .inverse p {
+        color: white;
+      }
+      .inverse h1, .inverse h2 {
+        color: #f3f3f3;
+        line-height: 0.8em;
+      }
+      #frame { zoom: 0.75; -moz-transform: scale(0.75); -moz-transform-origin: 0 0; }
+
+      /* Slide-specific styling */
+      #slide-inverse .footnote {
+        bottom: 12px;
+        left: 20px;
+      }
+      #slide-how .slides {
+        font-size: 0.9em;
+        position: absolute;
+        top:  151px;
+        right: 140px;
+      }
+      #slide-how .slides h3 {
+        margin-top: 0.2em;
+      }
+      #slide-how .slides .first, #slide-how .slides .second {
+        padding: 1px 20px;
+        height: 90px;
+        width: 120px;
+        -moz-box-shadow: 0 0 10px #777;
+        -webkit-box-shadow: 0 0 10px #777;
+        box-shadow: 0 0 10px #777;
+      }
+      #slide-how .slides .first {
+        background: #fff;
+        position: absolute;
+        top: 20%;
+        left: 20%;
+        z-index: 1;
+      }
+      #slide-how .slides .second {
+        position: relative;
+        background: #fff;
+        z-index: 0;
+      }
+
+      /* Two-column layout */
+      .left-column {
+        color: #777;
+        width: 20%;
+        height: 92%;
+        float: left;
+      }
+      .left-column h2:last-of-type, .left-column h3:last-child {
+        color: #000;
+      }
+      .right-column {
+        width: 75%;
+        float: right;
+        padding-top: 1em;
+      }
+      br {
+        line-height: 50%;
+      }
+      .task {
+        float: right;
+        font-size: 0.9em;
+        padding-top: 0.6em;
+      }
+    </style>
+  </head>
+
+</script>
+  
+
+  <body onload="var slideshow = remark.create();">
+    <textarea id="source">
+
+
+
+
+
+class: center, middle
+
+# [Testing Local Dependence over Network](https://github.com/neurodata/youjin):
+## via Local Distance Correlation
+
+<br/>
+
+Youjin Lee , Department of Biostatistics
+
+<!-- #### e: [jovo@jhu.edu](mailto:jovo@jhu.edu) | w:  -->
+<!-- ### [NeuroData.io](http://neurodata.io) -->
+
+
+---
+layout: true
+.bbar[ _[Motivation](#Motivation)_  | [Local Dependence](#Local Dependence) | [Distance Correlation](#Distance Correlation) | [Diffusion Distance](#Diffusion Distance) | [Simulation](#Simulation) | [Implication](#Implication)]
+---
+
+
+
+## Motivation
+
+<br/>
+
+
+
+- Interest in network structure and its node attributes
+  - Science : linkage for functional purpose, attributes passing through linkage, etc.
+  - Social Network : peer effects, homophily, etc.
+
+<br />
+
+.center[
+<img src="http://bitspace.no/wp-content/uploads/2014/12/brain-network.jpg" alt="Drawing" style="width: 300px;"/>
+<img src="http://blogs-images.forbes.com/datafreaks/files/2015/01/photodune-5787803-social-network-l-1940x1455.jpg" alt="Drawing" style="width: 300px;"/>]
+
+
+
+---
+
+## Motivation
+
+<br/>
+
+- Connection to Previous Work 
+  - Out of concern about lots of epidemiology studies.
+     e.g.) obesity and social networks.
+  - Abuse of standard statistical analysis without confirming independent sample assumptions. 
+  - Comparison between adjacent pairs vs. nonadjacent pairs.
+- Assumptions 
+  - Robustness of using adjacent relationships
+  - Testing global dependency  
+- Limitations
+  - Need to differentiate between nodes having different number of friends. (unique connection vs. one of many connections)
+  - Fail to achieve high power under .r[local dependence].
+
+---
+
+## Goal
+
+<br/>
+
+.g[G] : Graph / Network structure represented by edge variable .g[A].
+
+.y[X] : Real-valued node attribute variable.
+
+
+- We want to test:
+    
+    $$H\_{0} : f\_{G \cdot X} = f\_{G} \cdot f\_{X}$$
+
+    $$H\_{A} : f\_{G \cdot X} \neq f\_{G} \cdot f\_{X}$$
+
+- Possible properties of .g[G]:
+  - cannot guarantee global dependence.
+  - adjacent relationship does not say everything.
+- Possible properties of .y[X]:
+  - may be interested in multivariate attributes.  
+
+
+
+---
+layout: true
+.bbar[ [Motivation](#Motivation) | _[Local Independence](#Local Independence)_ | [Distance Correlation](#Distance Correlation) | [Diffusion Distance](#Diffusion Distance) | [Simulation](#Simulation) | [Implication](#Implication)]
+
+---
+name: Local Dependence
+
+
+## Structure of Networks
+
+<br/>
+- Network data often comes without natural structure, and shows evidence of local dependence.
+- Hierarchical models with latent, local structure and local dependence is instroduced [1]. 
+  - The set of nodes is partitioned into K blocks. (latent, local structure). 
+  - Probability of having edges within block is different across blocks, but having edges between blocks are homogeneous. 
+
+.center[
+<img src="images/latent.png" style="width: 250px;"/>]
+
+---
+### Local Independence Latent Structure Model
+
+<br/>
+- Borrowing an idea from hierarchical latent model, but we are not only interested in graphical structures, but also interested in distribution of nodes' attributes and their relationships.
+
+- .r[Local independence] is an underlying assumption of latent variable models [2].
+
+- .g[G] and .y[X] are conditionally independent each other given latent variable .blue[Z].
+
+- Association between .g[G] and .y[X] can be explained only through .blue[Z].
+
+- If a latent .blue[Z] has no association to .g[G] or .y[X], .g[G] and .y[X] are independent each other. 
+
+
+
+---
+### Local Independence Latent Structure Model
+
+Graph from simulation data (`kamada.kawai` in `R`)
+
+- Distribution of .y[X] = 1 is homogenous within block, but not identical across latent blocks.
+
+.center[
+<img src="images/voutcome1_three2.png" style="width: 400px;"/>]
+
+---
+
+### Local Independence Latent Structure Model
+
+Graph from simulation data (`kamada.kawai` in `R`)
+
+- Distribution of .y[X] = 2 is homogenous within block, but not identical across latent blocks.
+
+.center[
+<img src="images/voutcome2_three2.png" style="width: 400px;"/>]
+
+
+---
+
+### Local Independence Latent Structure Model
+
+Graph from simulation data (`kamada.kawai` in `R`)
+
+- Three types of node attribute outcomes (in ordinal scale)
+- .y[X] = 3
+
+.center[
+<img src="images/voutcome3_three2.png" style="width: 400px;"/>]
+
+
+---
+
+### Local Independence Latent Structure Model
+
+Graph from simulation data (`kamada.kawai` in `R`)
+
+- Three types of node attribute outcomes .y[X] and latent group .blue[Z].
+- Distribution of .y[X] depends on latent group .blue[Z]
+- Distribution of .g[G] depends on latent group .blue[Z]
+- Within .blue[Z], distribution of .y[X] and .g[G](edge) are independent. 
+
+
+.center[
+<img src="images/all_three2.png" style="width: 300px;"/>]
+
+
+---
+
+name: Local Independence 
+### Local Independence Latent Structure Model
+
+.g[A] : Edge indicator
+.y[X] : Node attribute
+.blue[Z : Latent Variable]
+
+- Model : 
+  - [Model 1] : P(A | .blue[Z]) P(X | .blue[Z]) P(.blue[Z])
+  - [Model 2] : P(A | .blue[Z]) P(.blue[Z] | X) P(X)
+
+ - Assumption : .g[A] $\perp$ .y[X] | .blue[Z] (local independence)
+- Causal Diagram
+
+.center[
+<img src="images/model1.png" style="width: 250px;"/>
+<img src="images/model2.png" style="width: 230px;"/>]
+
+
+---
+layout: true
+.bbar[ [Motivation](#Motivation)  | [Local Dependence](#Local Dependence) | _[Distance Correlation](#Distance Correlation)_ | [Diffusion Distance](#Diffusion Distance) | [Simulation](#Simulation) | [Implication](#Implication)]
+
+---
+
+## Distance Correlation 
+(Szekely, 2005 [3])
+
+<br/>
+
+- A measure of all types of dependence between two random vectors, not necessarily equal dimension. 
+
+- Pairwise Euclidean distance in .g[G] and .y[X]: 
+  - $C\_{ij} = \parallel \mbox{ node } i - \mbox{ node } j \parallel$
+  - $D\_{ij} = \parallel X\_{i} - X\_{j}   \parallel$
+
+-  Doubly centered distance matrix for .g[G] and .y[X]
+  - $C^{H}\_{ij} = c\_{ij} - \bar{c}\_{i \cdot} - \bar{c}\_{\cdot j} + \bar{c}_{\cdot \cdot}$ 
+  - $D^{H}\_{ij} = d\_{ij} - \bar{d}\_{i \cdot} - \bar{d}\_{\cdot j} + \bar{d}\_{\cdot \cdot}$ 
+
+- Sample distance covariance
+
+$$dCov^2\_{n}(G, X) : = \frac{1}{n^2} \sum\limits\_{i,j=1}^{n} C\_{ij} D\_{ij}$$
+
+---
+
+## Local Distance Correlation
+(Cencheng, 2016 )
+
+- Combines the ideas of distance correlation with nearest-neighbors of each node.
+
+- Neighborhood choice is very related to a latent membership choice, e.g. testing within certain .blue[Z].
+
+
+
+- Sample distance correlation for all possible combinations of (k,l):
+
+$$dCov\_{kl}(G,l) = \frac{1}{n^2} \sum\limits\_{i,j=1}^{n} C^{H}\_{ij} D^{H}\_{ij} I(r(C\_{ij}) <  \color{red}{k} ) I(r(D\_{ij}) <  \color{red}{l} )$$
+
+
+
+
+
+- Construction of $\color{yellow}{D\_{ij}}$ = $|| X\_{i}  - X\_{j}||$ is straightforward. How about distance matrix .g[C] = $\parallel \mbox{ node } i - \mbox{ node } j \parallel$? How can we derive distance matrix of .g[G] corresponding to Euclidean distance of .y[X] ? 
+
+
+---
+layout: true
+.bbar[ [Motivation](#Motivation)  | [Local Dependence](#Local Dependence) | [Distance Correlation](#Distance Correlation) | _[Diffusion Distance](#Diffusion Distance)_ | [Simulation](#Simulation) | [Implication](#Implication)]
+---
+
+
+## Diffusion Distance
+
+<br/>
+
+- Transition probability from node i to node j:
+
+$$P[i,j] = Pr\big( X\_{n} = j \big| X\_{n-1} = i  \big)$$
+
+  - We define it considering total number of edges from i:
+
+$$P[i,j] = \frac{\mbox{ Number of edges between i and j }}{\mbox{ Degree of node i } }$$
+
+
+-  Stationary probability π(j)
+   - No matter what the starting state was, the proportion of time the chain (signal) spends in node j.
+   - Inversely proportional to the likelihood that signal does not move and stay at node j.
+
+- .r[Concept] : On the journey to all other possible nodes from node i and node j, respectively, what is the chance that we stay between i and j? The bigger the chance, the smaller the distance is. 
+
+
+---
+
+## Diffusion Distance 
+
+<br/>
+
+- Consider all interal nodes .purple[w] in .g[G] and calculate the probability node i and node j passes .purple[w]. 
+
+- The higher π(.purple[w]) is, the harder a signal escapes from state .purple[w].
+
+- .r[Diffusion distance] between i and j at time t:
+
+$$C^{2}\_{t}[i,j] = \sum\limits_{w \in V(G)} \big( P^{t}[i,w] - P^{t}[j,w]  \big)^{2} \frac{1}{\pi(w)}$$
+
+
+  - If t = 1, diffusion distance is very similar to Euclidean distance based on adjacency matrix, but the latter one regards every adjacent relationship as equivalent. 
+
+  - As diffusion time t increases, distance matrix .g[C] is more likely to take into account distance of two nodes far away from in terms of geodesic distance. 
+
+
+
+
+
+
+---
+layout: true
+.bbar[ [Motivation](#Motivation)  | [Local Dependence](#Local Dependence) | [Distance Correlation](#Distance Correlation) | [Diffusion Distance](#Diffusion Distance) | _[Simulation](#Simulation)_ | [Implication](#Implication)]
+
+---
+## Simulation
+
+<br/>
+
+- Test : $H\_{0}$  : f(.g[G]⋅ .y[X]) = f(.g[G]) f(.y[X]) or f(.g[A] ⋅ .y[X]) = f(.g[A]) f(.y[X])
+
+- Model : P(A | .blue[Z]) P(X | .blue[Z]) P(X)
+
+- Test statistic : Local Distance Correlation
+  - Distance metric of .g[G]: Diffusion Distance t= 1, 5, 10, 20
+  - Distance metric of .y[X]: Euclidean Distance
+
+- Procedures:
+  - Generate iid .y[X] : Bernoulli  or Multinomial 
+  - Generate latent block variable .blue[Z] conditional on .y[X].
+  - Generate network .g[G] through an edge variable .g[A], conditional on .blue[Z]. 
+
+
+
+---
+## Two Block Simulation 1
+
+- .y[X] $\sim$ Bern(0.5) 
+- .blue[Z]  $\sim$  $\left\\{  \\begin{array}{cc} Bern(0.6) & X = 0 \\\\ Bern(0.4) & X = 1  \\end{array} \right.$
+- .g[A] $\sim$ Bern $\left\[  \\begin{array}{cc} \color{red}{0.5} & 0.1  \\\\ 0.1 &\color{red}{0.5} \\end{array}  \right]$
+
+
+
+
+.center[
+<img src="images/two2_power1.png" style="width: 300px;"/>
+<img src="images/two2_power20.png" style="width: 300px;"/>]
+
+---
+## Two Block Simulation 1
+
+<br/>
+
+- local optimal and global scale is very similar. 
+- Optimality is mostly dependent on neighborhood choice over network .g[G], and $k^{*} \approx 50.$
+- May indicate that testing using a few edges between two blocks for is not different or even better than testing using all edges between two groups. 
+
+
+.center[
+<img src="images/two2_plot.png" style="width: 300px;"/>]
+
+
+
+---
+## Two Block Simulation 2
+
+
+- .y[X] $\sim$ Bern(0.5) 
+- .blue[Z]  $\sim$  $\left\\{  \\begin{array}{cc} Bern(0.6) & X = 0 \\\\ Bern(0.4) & X = 1  \\end{array} \right.$
+- .g[A] $\sim$ Bern $\left\[  \\begin{array}{cc} \color{red}{0.5} & 0.1  \\\\ 0.1 & 0.1 \\end{array}  \right]$
+
+
+.center[
+<img src="images/two4_power1.png" style="width: 300px;"/>
+<img src="images/two4_power20.png" style="width: 300px;"/>]
+
+
+---
+## Two Block Simulation 2
+
+<br/>
+
+- local optimal and global scale is very similar. 
+- As diffusion distance .r[t] increases, optimal power as well as global testing power decreases.
+- Including second block has no benefits to detecting dependency, and as diffusion proces progresses, we are more likely to take into account them. 
+
+
+.center[
+<img src="images/two4_plot.png" style="width: 300px;"/>
+]
+
+
+---
+## Two Block Simulation 3
+
+- .y[X] $\sim$ Bern(0.5) 
+- .blue[Z]  $\sim$  $\left\\{  \\begin{array}{cc} Bern(0.6) & X = 0 \\\\ Bern(0.4) & X = 1  \\end{array} \right.$
+- .g[A] $\sim$ Bern $\left\[  \\begin{array}{cc} \color{red}{0.5} & 0.3  \\\\ 0.3 & \color{blue}{0.1} \\end{array}  \right]$
+
+
+.center[
+<img src="images/two6_power1.png" style="width: 300px;"/>
+<img src="images/two6_power20.png" style="width: 300px;"/>]
+
+
+
+---
+## Two Block Simulation 3
+
+<br/>
+
+- Local optimal is systematically better than global test. 
+- As diffusion distance .r[t] increases, optimal power as well as global testing power decreases.
+- Including second block is .r[against] to detecting dependency, and as diffusion proces progresses, we are more likely to take into account them. 
+
+
+.center[
+<img src="images/two6_plot.png" style="width: 300px;"/>]
+
+
+
+---
+## Three Block Simulation 1
+
+
+- .y[X] $\sim$ Multinomial(1/3, 1/3, 1/3)
+- .blue[Z]  $\sim$  $\left\\{  \\begin{array}{cc} Multinorm(\color{red}{0.5}, 0.25, 0.25 ) & X = 1 \\\\ Multinorm(0.25, \color{red}{0.5}, 0.25  ) & X = 2 \\\\ Multinorm(0.25, 0.25, \color{red}{0.5} ) & X = 3 \\end{array} \right.$
+- .g[A] $\sim$ Bern $\left\[  \\begin{array}{cc} \color{red}{0.5} & 0.1 & 0.1  \\\\ 0.1 & \color{red}{0.5} & 0.1  \\\\ 0.1 & 0.1 & \color{red}{0.5}   \\end{array}  \right]$
+
+
+.center[
+<img src="images/three2_power1.png" style="width: 300px;"/>
+<img src="images/three2_power20.png" style="width: 300px;"/>]
+
+
+
+---
+## Three Block Simulation 1
+
+<br/>
+
+- Related to figures presented before.
+- Local optimal is systematically better than global test. 
+- Optimality mostly depends on the neighborhood choice of .y[X], and upto including 100 nearest neighbors. (size of two blocks)
+
+
+
+
+.center[
+<img src="images/three2_plot.png" style="width: 300px;"/>]
+
+
+
+
+
+---
+## Three Block Simulation 2
+
+- .y[X] $\sim$ Multinomial(1/3, 1/3, 1/3)
+- .blue[Z]  $\sim$  $\left\\{  \\begin{array}{cc} Multinorm(\color{red}{0.5}, 0.25, 0.25 ) & X = 1 \\\\ Multinorm(0.25, \color{red}{0.5}, 0.25  ) & X = 2 \\\\ Multinorm(0.25, 0.25, \color{red}{0.5} ) & X = 3 \\end{array} \right.$
+- .g[A] $\sim$ Bern $\left\[  \\begin{array}{cc} \color{red}{0.5} & 0.1 & 0.1  \\\\ 0.1 & \color{red}{0.5} & 0.1  \\\\ 0.1 & 0.1 & 0.1   \\end{array}  \right]$
+
+
+.center[
+<img src="images/three4_power1.png" style="width: 300px;"/>
+<img src="images/three4_power20.png" style="width: 300px;"/>]
+
+
+---
+## Three Block Simulation 2
+
+- Gap between local optimal and global scale is getting larger. 
+- The intuition behind it is that as diffusion process progresses, we are more likely to include block 3, of which edge distribution is randomly distributed across blocks. 
+- Optimality depends on both neighborhood choice of .g[G] and .y[X]. 
+
+
+.center[
+<img src="images/three4_plot.png" style="width: 300px;"/>]
+
+
+
+
+---
+layout: true
+.bbar[ [Motivation](#Motivation)  | [Local Dependence](#Local Dependence) | [Distance Correlation](#Distance Correlation) | [Diffusion Distance](#Diffusion Distance) | [Simulation](#Simulation) | _[Implication](#Implication)]_
+
+---
+
+## Implication
+
+<br />
+- Local optimality > Global Power
+  - When removing an edge between different blocks would improve testing power.
+  - Existence of block of which within-block edge distribution is no difference from between-block distribution.
+  - Existence of negative correlation, e.g. within-block edge probability is smaller than between-block edge probability. 
+
+- Different power across different diffusion time.
+  - When within-block edge probability is smaller than between-block edge probability. 
+  - Existence of block where a latent variable .blue[Z] has no influence on .g[A] or .y[X].
+
+
+---
+
+## Applications
+
+<br />
+
+- Use of (local) distance correlation and diffusion distance to test:
+  - Independence between two networks :   $H\_{0} : f(G\_{1} \cdot G\_{2}) = f(G\_{1}) f(G\_{2})$
+- Independence between Networks and Attributes using multiple samples
+  - e.g) Independence between brain connectivites and personality studied from independent samples.
+- Can be used to study hidden structure of network.
+
+- If .y[X] acts as a confounder when analyzing the effect of other intervention on network structure .g[G], or vice versa, since within some range or neighborhood choice, we can assume independence we do not have to discard all individuals (nodes). 
+
+
+
+---
+
+## Limitations
+
+<br />
+- Hard to .r[prove] when and why we achieve local optimal. 
+
+- Hard to formalize when and why testing power changes according to diffusion distance matrix.
+
+- Hard to find the optimal scale and optimal time, if exists, in real data.
+
+
+
+
+
+---
+
+## Alternatives (Future work)
+
+<br />
+- Try different working model related to .r[local dependence]:
+  - P(.g[A], .y[X], .blue[Z]) = P(.g[A] | .y[X], .blue[Z]) P(.y[X]) P( .blue[Z])
+  - Within block : P(.g[A] | .y[X], .blue[Z]) $\neq$ P(.g[A] | .blue[Z])
+  - Between blocks : P(.g[A] | .y[X], .blue[Z]) = P(.g[A] | .blue[Z])
+  - Maybe easier to explain by likelihood : factorize into within block & between blocks. 
+- Study time by time and see how much time it takes until .r[reachability] between and within block is getting similar.
+- Study the algorithms to incorporate time-dependence optimality changes. 
+
+
+
+
+---
+name: 
+
+# References
+
+
+.small[
+1. Schweinberger, M., & Handcock, M. S. (2015). Local dependence in random graph models: characterization, properties and statistical inference. Journal of the Royal Statistical Society: Series B (Statistical Methodology), 77(3), 647-676.
+
+2. Lazarsfeld, P. F, & Henry, N. W. (1968). Latent structure analysis. New York: Houghton, Mifflin.
+
+3. Székely, G. J., & Rizzo, M. L. (2013). Energy statistics: A class of statistics based on distances. Journal of statistical planning and inference, 143(8), 1249-1272.
+
+]
+
+
+
+---
+# Questions?
+
+<!-- ### Funding &nbsp;&nbsp;&nbsp;&nbsp;   -->
+
+<br />
+
+
+
+    </textarea>
+    <script src="remark-latest.min.js" type="text/javascript">
+    </script>
+    <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML&delayStartupUntil=configured" type="text/javascript"></script>
+    <script type="text/javascript">
+      var slideshow = remark.create();
+      // Setup MathJax
+      MathJax.Hub.Config({
+          tex2jax: {
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+          }
+      });
+      MathJax.Hub.Queue(function() {
+          $(MathJax.Hub.getAllJax()).map(function(index, elem) {
+              return(elem.SourceElement());
+          }).parent().addClass('has-jax');
+      });
+      MathJax.Hub.Configured();
+var slideshow = remark.create({
+  // Set the slideshow display ratio
+  // Default: '4:3'
+  // Alternatives: '16:9', ...
+  ratio: '4:3',
+  // Navigation options
+  navigation: {
+    // Enable or disable navigating using scroll
+    // Default: true
+    // Alternatives: false
+    scroll: true,
+    // Enable or disable navigation using touch
+    // Default: true
+    // Alternatives: false
+    touch: true,
+    // Enable or disable navigation using click
+    // Default: false
+    // Alternatives: true
+    click: false
+  },
+  // Customize slide number label, either using a format string..
+  // slideNumberFormat: 'Slide %current% of %total%',
+  // .. or by using a format function
+  slideNumberFormat: function (current, total) {
+    return  current + ' of ' + total;
+  },
+  // Enable or disable counting of incremental slides in the slide counting
+  countIncrementalSlides: false
+}); 
+    </script>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+  </body>
+</html>
