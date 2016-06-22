@@ -341,9 +341,28 @@ name: Local Independence
 ### Local Independence Latent Structure Model
 
 <br/>
-- Borrowing an idea from hierarchical latent model, but we are not only interested in graphical structures, but also interested in distribution of nodes' attributes and their relationships.
 
-- .r[Local independence] is an underlying assumption of latent variable models [2].
+
+- [Hoff et al. (2002)](http://www.tandfonline.com/doi/pdf/10.1198/016214502388618906)[2] first proposed the latent space model for social networks. This model posits there is an unobserved  Euclidean social space in which each actor has a position $Z_{i},$ which distance between two nodes is used to predict the probability of having edges in the model.
+
+
+- [Austin, Linkletter, and Wu (2013)](http://www.sciencedirect.com/science/article/pii/S0378873313000269)[2] proposed a model class where the network is expressed as a function of nodal latent variables, say $Z$, and the latent variables themselves are regressed on the attributes. 
+
+- .r[Local independence] is an underlying assumption of latent variable models [3].
+
+- We are not interested in predicting probability of having edges given each nodal attributes, but interested in dependency between these two possibly in the presence of local structure of network.
+
+
+
+
+---
+### Local Independence Latent Structure Model
+
+<br/>
+
+- Assume simpliest latent model, but based on the model from lots of literatures on network structures or testing networks.
+
+- In testing dependence between .g[G] and .y[X], we do not require any parametric model assumption nor any prediction. 
 
 - .g[G] and .y[X] are conditionally independent each other given latent variable .blue[Z].
 
@@ -431,7 +450,7 @@ layout: true
 ---
 name: Distance Correlation
 ## Distance Correlation 
-(Szekely, 2005 [3])
+(Szekely, 2005 [4])
 
 <br/>
 
@@ -478,7 +497,7 @@ layout: true
 
 name: Diffusion Distance
 ## Diffusion Distance
-(Coifman & Lafon, 2006 [4])
+(Coifman & Lafon, 2006 [5])
 
 
 - Transition probability from node i to node j:
@@ -543,6 +562,36 @@ name: Simulation
   - Generate latent block variable .blue[Z] conditional on .y[X].
   - Generate network .g[G] through an edge variable .g[A], conditional on .blue[Z]. 
 
+---
+## Two Block Simulation 1
+
+<br \>
+.pull-left[
+- .y[X] $\sim$ Bern(0.5) 
+- .blue[Z]  $\sim$  $\left\\{  \\begin{array}{cc} Bern(0.6) & X = 0 \\\\ Bern(0.4) & X = 1  \\end{array} \right.$
+<br \>
+- .g[A] $\sim$ Bern $\left\[  \\begin{array}{cc} \color{red}{p} & q  \\\\ q &\color{red}{p} \\end{array}  \right]$
+<br \>
+- Not much difference between power at local optimal and at global scale.( < 10 %)]
+
+
+.pull-right[
+<img src="images/two_same_optimal.png" style="width: 400px;"/>
+ .orange[Local ptimal power across t=1,5,10,20 ]]
+
+---
+## Two Block Simulation 1
+
+<br \>
+
+In general, as diffusion process progresses, the power is increasing , and the power is decreasing when p and q are very similar. (?)
+
+
+.center[
+<img src="images/two_same_time1.png" style="width: 230px;"/>
+<img src="images/two_same_time2.png" style="width: 230px;"/>
+<img src="images/two_same_time3.png" style="width: 230px;"/>
+]
 
 
 ---
@@ -562,7 +611,7 @@ name: Simulation
 ---
 ## Two Block Simulation 1
 
-<br/>
+<br />
 
 - local optimal and global scale is very similar. 
 - Optimality is mostly dependent on neighborhood choice over network .g[G], and $k^{\star} \approx 50.$
@@ -573,8 +622,28 @@ name: Simulation
 <img src="images/REtwo2_plot.png" style="width: 350px;"/>]
 
 
+---
+
+## Two Block Simulation 2
+
+<br />
+
+.pull-left[
+- .y[X] $\sim$ Bern(0.5) 
+- .blue[Z]  $\sim$  $\left\\{  \\begin{array}{cc} Bern(0.6) & X = 0 \\\\ Bern(0.4) & X = 1  \\end{array} \right.$
+<br />
+- .g[A] $\sim$ Bern $\left\[  \\begin{array}{cc} \color{red}{p} & r  \\\\ r & r \\end{array}  \right]$
+<br />
+- Not much difference between power at local optimal and at global scale.(< 12%)]
+
+
+.pull-right[
+<img src="images/two_part_optimal.png" style="width: 400px;"/>
+ .orange[Local ptimal power across t=1,5,10,20 ]]
+
 
 ---
+
 ## Two Block Simulation 2
 
 
@@ -586,6 +655,21 @@ name: Simulation
 .center[
 <img src="images/REtwo4_power1.png" style="width: 350px;"/>
 <img src="images/REtwo4_power20.png" style="width: 350px;"/>]
+
+---
+
+## Two Block Simulation 2
+
+<br \>
+
+Look at the behavior of upper triangle case (?)
+
+
+.center[
+<img src="images/two_part_time1.png" style="width: 230px;"/>
+<img src="images/two_part_time2.png" style="width: 230px;"/>
+<img src="images/two_part_time3.png" style="width: 230px;"/>
+]
 
 
 ---
@@ -606,60 +690,17 @@ name: Simulation
 
 
 ---
-## Two Block Simulation 3
-
-- .y[X] $\sim$ Bern(0.5) 
-- .blue[Z]  $\sim$  $\left\\{  \\begin{array}{cc} Bern(0.6) & X = 0 \\\\ Bern(0.4) & X = 1  \\end{array} \right.$
-- .g[A] $\sim$ Bern $\left\[  \\begin{array}{cc} \color{red}{0.5} & 0.3  \\\\ 0.3 & \color{blue}{0.1} \\end{array}  \right]$
+## Three Block Simulation 1
 
 
-.center[
-<img src="images/REtwo6_power1.png" style="width: 350px;"/>
-<img src="images/REtwo6_power20.png" style="width: 350px;"/>]
+- .y[X] $\sim$ Multinomial(1/3, 1/3, 1/3)
+- .blue[Z]  $\sim$  $\left\\{  \\begin{array}{cc} Multinorm(\color{red}{0.5}, 0.25, 0.25 ) & X = 1 \\\\ Multinorm(0.25, \color{red}{0.5}, 0.25  ) & X = 2 \\\\ Multinorm(0.25, 0.25, \color{red}{0.5} ) & X = 3 \\end{array} \right.$
+.pull-left[ .g[A] $\sim$ Bern $\left\[  \\begin{array}{cc} \color{red}{p} & q & q  \\\\\\ q & \color{red}{p} & q  \\\\\\ q & q & \color{red}{p}   \\end{array}  \right]$]
 
+.pull-right[
+<img src="images/three_same_optimal.png" style="width: 400px;"/>
+ .orange[Local ptimal power across t=1,5,10,20 ]]
 
-
----
-## Two Block Simulation 3
-
-<br/>
-
-- Local optimal is systematically better than global test. 
-- As diffusion distance .r[t] increases, optimal power as well as global testing power decreases.
-- Including second block is .r[against] to detecting dependency, and as diffusion proces progresses, we are more likely to take into account them. 
-
-.pull-left[ $\color{green}{A}$ $\sim$ Bern $\left\[  \\begin{array}{cc} \color{red}{0.5} & 0.3  \\\\\\ 0.3 & \color{blue}{0.1} \\end{array}  \right]$]
-
-.right[
-<img src="images/REtwo6_plot.png" style="width: 350px;"/>]
----
-## Two Block Simulation 4
-
-- .y[X] $\sim$ Bern(0.5) 
-- .blue[Z]  $\sim$  $\left\\{  \\begin{array}{cc} Bern(0.6) & X = 0 \\\\ Bern(0.4) & X = 1  \\end{array} \right.$
-- .g[A] $\sim$ Bern $\left\[  \\begin{array}{cc} \color{red}{0.3} & 0.05  \\\\ 0.05 & \color{blue}{0.2} \\end{array}  \right]$
-
-
-.center[
-<img src="images/REtwo8_power1.png" style="width: 350px;"/>
-<img src="images/REtwo8_power20.png" style="width: 350px;"/>]
-
-
-
----
-## Two Block Simulation 4
-
-<br/>
-
-- When t = 1, diffusion within one block is slower than the previous one so within-block distance is not that small than between-block distance. 
-- As time increases beyond t = 5, global testing power decreases while power at local optimal stays calm. 
-- Decreasing global testing power might be due to relative similar within-block and between-block edge probability for the second block. 
-
-.pull-left[ $\color{green}{A}$ $\sim$ Bern $\left\[  \\begin{array}{cc} \color{red}{0.3} & 0.05  \\\\\\ 0.05 & \color{blue}{0.2} \\end{array}  \right]$]
-
-
-.right[
-<img src="images/REtwo8_plot.png" style="width: 300px;"/>]
 
 
 
@@ -694,8 +735,26 @@ name: Simulation
 <img src="images/REthree2_plot.png" style="width: 350px;"/>]
 
 
+
+
 ---
 ## Three Block Simulation 2
+<br/>
+
+- .y[X] $\sim$ Multinomial(1/3, 1/3, 1/3)
+- .blue[Z]  $\sim$  $\left\\{  \\begin{array}{cc} Multinorm(\color{red}{0.5}, 0.25, 0.25 ) & X = 1 \\\\ Multinorm(0.25, \color{red}{0.5}, 0.25  ) & X = 2 \\\\ Multinorm(0.25, 0.25, \color{red}{0.5} ) & X = 3 \\end{array} \right.$
+.pull-left[.g[A] $\sim$ Bern $\left\[  \\begin{array}{cc} \color{red}{p} & q & q  \\\\\\ q & \color{red}{p} & q  \\\\\\ q & q & q   \\end{array}  \right]$]
+
+.pull-right[
+<img src="images/three_part_optimal.png" style="width: 350px;"/>
+.orange[Local ptimal power across t=1,5,10,20 ]]
+
+
+
+
+---
+## Three Block Simulation 2
+
 
 - .y[X] $\sim$ Multinomial(1/3, 1/3, 1/3)
 - .blue[Z]  $\sim$  $\left\\{  \\begin{array}{cc} Multinorm(\color{red}{0.5}, 0.25, 0.25 ) & X = 1 \\\\ Multinorm(0.25, \color{red}{0.5}, 0.25  ) & X = 2 \\\\ Multinorm(0.25, 0.25, \color{red}{0.5} ) & X = 3 \\end{array} \right.$
@@ -719,6 +778,49 @@ name: Simulation
 
 .right[
 <img src="images/REthree4_plot.png" style="width: 350px;"/>]
+
+
+---
+## Three Block Simulation 3
+<br/>
+
+- .y[X] $\sim$ Multinomial(1/3, 1/3, 1/3)
+- .blue[Z]  $\sim$  $\left\\{  \\begin{array}{cc} Multinorm(\color{red}{0.5}, 0.25, 0.25 ) & X = 1 \\\\ Multinorm(0.25, \color{red}{0.5}, 0.25  ) & X = 2 \\\\ Multinorm(0.25, 0.25, \color{red}{0.5} ) & X = 3 \\end{array} \right.$
+.pull-left[.g[A] $\sim$ Bern $\left\[  \\begin{array}{cc} \color{red}{p} & q & \color{pink}{r}  \\\\\\ q & \color{red}{p} & q  \\\\\\ \color{pink}{r} & q & \color{red}{p}   \\end{array}  \right]$]
+
+.pull-right[
+<img src="images/three_triple_optimal.png" style="width: 350px;"/>
+.orange[Local ptimal power across t=1,5,10,20 ]]
+
+
+---
+## Three Block Simulation 3
+<br/>
+
+- Relatively large discrepancies between global scale and local scale.
+
+- Especially when $\color{red}{p}$ $\geq$ $\color{pink}{r}$ > q.
+
+.pull-left[
+<img src="images/three_triple_diff1.png" style="width: 300px;"/>]
+.pull-right[
+<img src="images/three_triple_diff2.png" style="width: 300px;"/>
+]
+
+
+---
+## Three Block Simulation 3
+
+<br/>
+- In some combination of (p,q,r), we can observe optimal diffusion time. 
+
+.pull-left[
+<img src="images/three_triple_time1.png" style="width: 300px;"/>]
+.pull-right[
+<img src="images/three_triple_time3.png" style="width: 300px;"/>
+]
+
+
 
 ---
 ## Three Block Simulation 3
@@ -748,40 +850,26 @@ name: Simulation
 .right[
 <img src="images/REthree10_plot.png" style="width: 350px;"/>]
 
----
-## Three Block Simulation 4
-
-- .y[X] $\sim$ Multinomial(1/3, 1/3, 1/3)
-- .blue[Z]  $\sim$  $\left\\{  \\begin{array}{cc} Multinorm(\color{red}{0.5}, 0.25, 0.25 ) & X = 1 \\\\ Multinorm(0.25, \color{red}{0.5}, 0.25  ) & X = 2 \\\\ Multinorm(0.25, 0.25, \color{red}{0.5} ) & X = 3 \\end{array} \right.$
-- .g[A] $\sim$ Bern $\left\[  \\begin{array}{cc} \color{red}{0.3} & 0.05 & 0.05 \\\\ 0.05 & \color{red}{0.1} & 0.05  \\\\ 0.05 & 0.05 & \color{red}{0.2}   \\end{array}  \right]$
-
-
-.center[
-<img src="images/REthree13_power1.png" style="width: 320px;"/>
-<img src="images/REthree13_power20.png" style="width: 320px;"/>]
-
-
----
-## Three Block Simulation 4
-<br /> 
-
-- In overall, the estimated power increases between t = 1 ~ 5.
-- Discrepancy between local optimal and global scale is largest when t=1, where $k^{\star}$ $\approx$ 50 and $l^{\star}$ $\approx$ 50-100.
-- As diffusion progresses, the range of $k^{\star}$ is getting wider. 
-
-
-.pull-left[ $\color{green}{A}$ $\sim$ Bern $\left\[  \\begin{array}{cc} \color{red}{0.3} & 0.05 & 0.05  \\\\\\ 0.05 & \color{red}{0.1} & 0.05  \\\\\\ 0.05 & 0.05 & \color{red}{0.2}   \\end{array}  \right]$]
-
-.right[
-<img src="images/REthree13_plot.png" style="width: 350px;"/>]
-
 
 ---
 layout: true
 .bbar[ [Motivation](#Motivation)  | [Local Independence](#Local Independence) | [Distance Correlation](#Distance Correlation) | [Diffusion Distance](#Diffusion Distance) | [Simulation](#Simulation) | _[Implication](#Implication)]_
 
+
 ---
 name: Implication
+## Implication
+
+<br />
+- We do not need joint model of nodal attribute and network.
+
+- We do not need any prediction in dependency model.
+
+- Existence of clusters 
+
+
+
+---
 ## Implication
 
 <br />
@@ -851,13 +939,15 @@ name:
 .small[
 1. Schweinberger, M., & Handcock, M. S. (2015). Local dependence in random graph models: characterization, properties and statistical inference. Journal of the Royal Statistical Society: Series B (Statistical Methodology), 77(3), 647-676.
 
-2. Lazarsfeld, P. F, & Henry, N. W. (1968). Latent structure analysis. New York: Houghton, Mifflin.
+2. Hoff, P. D., Raftery, A. E., & Handcock, M. S. (2002). Latent space approaches to social network analysis. Journal of the american Statistical association, 97(460), 1090-1098.
 
-3. Székely, G. J., & Rizzo, M. L. (2013). Energy statistics: A class of statistics based on distances. Journal of statistical planning and inference, 143(8), 1249-1272.
+3. Lazarsfeld, P. F, & Henry, N. W. (1968). Latent structure analysis. New York: Houghton, Mifflin.
 
-4. Coifman, R. R., & Lafon, S. (2006). Diffusion maps. Applied and computational harmonic analysis, 21(1), 5-30.
+4. Székely, G. J., & Rizzo, M. L. (2013). Energy statistics: A class of statistics based on distances. Journal of statistical planning and inference, 143(8), 1249-1272.
 
-5. Tang, M., & Trosset, M. (2010). Graph metrics and dimension reduction. Indiana University, Indianapolis, IN.
+5. Coifman, R. R., & Lafon, S. (2006). Diffusion maps. Applied and computational harmonic analysis, 21(1), 5-30.
+
+6. Tang, M., & Trosset, M. (2010). Graph metrics and dimension reduction. Indiana University, Indianapolis, IN.
 
 ]
 
