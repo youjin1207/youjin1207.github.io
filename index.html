@@ -567,11 +567,19 @@ name: Simulation
 
 <br \>
 .pull-left[
+
 - .y[X] $\sim$ Bern(0.5) 
+
+<br \>
+
 - .blue[Z]  $\sim$  $\left\\{  \\begin{array}{cc} Bern(0.6) & X = 0 \\\\ Bern(0.4) & X = 1  \\end{array} \right.$
+
 <br \>
+
 - .g[A] $\sim$ Bern $\left\[  \\begin{array}{cc} \color{red}{p} & q  \\\\ q &\color{red}{p} \\end{array}  \right]$
+
 <br \>
+
 - Not much difference between power at local optimal and at global scale.( < 10 %)]
 
 
@@ -584,7 +592,7 @@ name: Simulation
 
 <br \>
 
-In general, as diffusion process progresses, the power is increasing , and the power is decreasing when p and q are very similar. (?)
+- In general, as diffusion process progresses, the power is increasing decreasing when p and q are very similar.  
 
 
 .center[
@@ -597,29 +605,35 @@ In general, as diffusion process progresses, the power is increasing , and the p
 ---
 ## Two Block Simulation 1
 
+.pull-left[
 - .y[X] $\sim$ Bern(0.5) 
-- .blue[Z]  $\sim$  $\left\\{  \\begin{array}{cc} Bern(0.6) & X = 0 \\\\ Bern(0.4) & X = 1  \\end{array} \right.$
-- .g[A] $\sim$ Bern $\left\[  \\begin{array}{cc} \color{red}{0.5} & 0.1  \\\\ 0.1 &\color{red}{0.5} \\end{array}  \right]$
+<br\>
 
+- .blue[Z]  $\sim$  $\left\\{  \\begin{array}{cc} Bern(0.6) & X = 0 \\\\ Bern(0.4) & X = 1  \\end{array} \right.$]
 
+.pull-right[
+<br \>
+- .g[A] $\sim$ Bern $\left\[  \\begin{array}{cc} \color{red}{0.4} & 0.1  \\\\ 0.1 &\color{red}{0.4} \\end{array}  \right]$ ]
 
+<br \>
 
 .center[
-<img src="images/REtwo2_power1.png" style="width: 350px;"/>
-<img src="images/REtwo2_power20.png" style="width: 350px;"/>]
+<img src="images/T441_power1.png" style="width: 350px;"/>
+<img src="images/T441_power20.png" style="width: 350px;"/>]
+
 
 ---
 ## Two Block Simulation 1
+<br/>
 
-<br />
-
-- local optimal and global scale is very similar. 
-- Optimality is mostly dependent on neighborhood choice over network .g[G], and $k^{\star} \approx 50.$
-- May indicate that testing using a few edges between two blocks for is not different or even better than testing using all edges between two groups. 
+- slightly increasing power 
+  - 52% (t=1) to 59% (t=20) in optimal scale 
+- In diffusion distance Matrix $C\_{1}$ and $C\_{20}$, the pattern is very consistent even though the strength is different. 
 
 
 .center[
-<img src="images/REtwo2_plot.png" style="width: 350px;"/>]
+<img src="images/T441_A1.png" style="width: 350px;"/>
+<img src="images/T441_A20.png" style="width: 350px;"/>]
 
 
 ---
@@ -630,14 +644,19 @@ In general, as diffusion process progresses, the power is increasing , and the p
 
 .pull-left[
 - .y[X] $\sim$ Bern(0.5) 
+
+<br />
 - .blue[Z]  $\sim$  $\left\\{  \\begin{array}{cc} Bern(0.6) & X = 0 \\\\ Bern(0.4) & X = 1  \\end{array} \right.$
+
 <br />
 - .g[A] $\sim$ Bern $\left\[  \\begin{array}{cc} \color{red}{p} & r  \\\\ r & r \\end{array}  \right]$
+
 <br />
 - Not much difference between power at local optimal and at global scale.(< 12%)]
 
 
 .pull-right[
+<br />
 <img src="images/two_part_optimal.png" style="width: 400px;"/>
  .orange[Local ptimal power across t=1,5,10,20 ]]
 
@@ -646,23 +665,9 @@ In general, as diffusion process progresses, the power is increasing , and the p
 
 ## Two Block Simulation 2
 
-
-- .y[X] $\sim$ Bern(0.5) 
-- .blue[Z]  $\sim$  $\left\\{  \\begin{array}{cc} Bern(0.6) & X = 0 \\\\ Bern(0.4) & X = 1  \\end{array} \right.$
-- .g[A] $\sim$ Bern $\left\[  \\begin{array}{cc} \color{red}{0.5} & 0.1  \\\\ 0.1 & 0.1 \\end{array}  \right]$
-
-
-.center[
-<img src="images/REtwo4_power1.png" style="width: 350px;"/>
-<img src="images/REtwo4_power20.png" style="width: 350px;"/>]
-
----
-
-## Two Block Simulation 2
-
 <br \>
 
-Look at the behavior of upper triangle case (?)
+-  When r >> p (upper triangular part), the pattern power increases and decreases is more clear. 
 
 
 .center[
@@ -673,125 +678,216 @@ Look at the behavior of upper triangle case (?)
 
 
 ---
+
+## Two Block Simulation 2
+
+
+.pull-left[
+- .y[X] $\sim$ Bern(0.5) 
+<br\>
+
+- .blue[Z]  $\sim$  $\left\\{  \\begin{array}{cc} Bern(0.6) & X = 0 \\\\ Bern(0.4) & X = 1  \\end{array} \right.$]
+
+.pull-right[
+<br \>
+- .g[A] $\sim$ Bern $\left\[  \\begin{array}{cc} \color{red}{0.4} & 0.1  \\\\ 0.1 & 0.1 \\end{array}  \right]$ ]
+
+<br \>
+
+
+.center[
+<img src="images/T411_power1.png" style="width: 350px;"/>
+<img src="images/T411_power20.png" style="width: 350px;"/>]
+
+
+
+
+---
 ## Two Block Simulation 2
 
 <br/>
 
-- local optimal and global scale is very similar. 
-- As diffusion distance .r[t] increases, optimal power as well as global testing power decreases.
-- Including second block has no benefits to detecting dependency, and as diffusion proces progresses, we are more likely to take into account them. 
-
-.pull-left[ $\color{green}{A}$ $\sim$ Bern $\left\[  \\begin{array}{cc} \color{red}{0.5} & 0.1  \\\\\\ 0.1 & 0.1 \\end{array}  \right]$]
+- As diffusion distance .r[t] increases, optimal power as well as global testing power decreases; keep decreasing from .purple[46%] (40%) at t = 1 to .purple[29%] (25%) at t= 20 in .purple[optimal] (global) scale.
+- As diffusion proces progresses, we lose specific feature of distance within second block. 
 
 
-.right[
-<img src="images/REtwo4_plot.png" style="width: 350px;"/>
-]
+.center[
+<img src="images/T411_A1.png" style="width: 330px;"/>
+<img src="images/T411_A20.png" style="width: 330px;"/>]
+
 
 
 ---
 ## Three Block Simulation 1
+<br/>
 
+.pull-left[
+- .y[X] $\sim$ $Multi(1/3, 1/3, 1/3)$
 
-- .y[X] $\sim$ Multinomial(1/3, 1/3, 1/3)
-- .blue[Z]  $\sim$  $\left\\{  \\begin{array}{cc} Multinorm(\color{red}{0.5}, 0.25, 0.25 ) & X = 1 \\\\ Multinorm(0.25, \color{red}{0.5}, 0.25  ) & X = 2 \\\\ Multinorm(0.25, 0.25, \color{red}{0.5} ) & X = 3 \\end{array} \right.$
-.pull-left[ .g[A] $\sim$ Bern $\left\[  \\begin{array}{cc} \color{red}{p} & q & q  \\\\\\ q & \color{red}{p} & q  \\\\\\ q & q & \color{red}{p}   \\end{array}  \right]$]
+- .blue[Z]  $\sim  \left\\{  \\begin{array}{cc} Multi(\color{red}{0.5}, 0.25, 0.25 ) & X = 1 \\\\ Multi(0.25, \color{red}{0.5}, 0.25  ) & X = 2 \\\\ Multi(0.25, 0.25, \color{red}{0.5} ) & X = 3 \\end{array} \right.$
+
+<br/>
+- .g[A] $\sim$ Bern $\left\[  \\begin{array}{cc} \color{red}{p} & q & q  \\\\\\ q & \color{red}{p} & q  \\\\\\ q & q & \color{red}{p}   \\end{array}  \right]$
+
+- Diffusion pattern is pretty similar to that in two block simulation case 1; increasing and decreasing in general.]
 
 .pull-right[
 <img src="images/three_same_optimal.png" style="width: 400px;"/>
  .orange[Local ptimal power across t=1,5,10,20 ]]
 
 
+---
+## Three Block Simulation 1
+
+<br />
+- slightly larger difference between local optimal power and global power in overall than two block case (about 10% in average).
+
+- Intuition : Block1 ($\uparrow$ .y[X]=1) and Block3 ($\uparrow$ .y[X]=3) are most different in terms of .y[X] but do not differ in terms of .g[G]. For Block2 ($\uparrow$ .y[X]=2), both Block1 and Block3 are closest neighbor. 
+
+.center[
+<img src="images/three_same_diff1.png" style="width: 300px;"/>
+<img src="images/three_same_diff4.png" style="width: 300px;"/>]
+
+
 
 
 ---
 ## Three Block Simulation 1
 
+.pull-left[
+- .y[X] $\small{\sim Multi(1/3, 1/3, 1/3)}$
 
-- .y[X] $\sim$ Multinomial(1/3, 1/3, 1/3)
-- .blue[Z]  $\sim$  $\left\\{  \\begin{array}{cc} Multinorm(\color{red}{0.5}, 0.25, 0.25 ) & X = 1 \\\\ Multinorm(0.25, \color{red}{0.5}, 0.25  ) & X = 2 \\\\ Multinorm(0.25, 0.25, \color{red}{0.5} ) & X = 3 \\end{array} \right.$
-- .g[A] $\sim$ Bern $\left\[  \\begin{array}{cc} \color{red}{0.5} & 0.1 & 0.1  \\\\ 0.1 & \color{red}{0.5} & 0.1  \\\\ 0.1 & 0.1 & \color{red}{0.5}   \\end{array}  \right]$
-
-
-.center[
-<img src="images/REthree2_power1.png" style="width: 320px;"/>
-<img src="images/REthree2_power20.png" style="width: 320px;"/>]
-
-
-
----
-## Three Block Simulation 1
-
-<br/>
-
-- Related to figures presented before.
-- Local optimal is systematically better than global test. 
-- Optimality mostly depends on the neighborhood choice of .y[X], and upto including 100 nearest neighbors. (size of two blocks)
-
-
-
-
-.center[
-<img src="images/REthree2_plot.png" style="width: 350px;"/>]
-
-
-
-
----
-## Three Block Simulation 2
-<br/>
-
-- .y[X] $\sim$ Multinomial(1/3, 1/3, 1/3)
-- .blue[Z]  $\sim$  $\left\\{  \\begin{array}{cc} Multinorm(\color{red}{0.5}, 0.25, 0.25 ) & X = 1 \\\\ Multinorm(0.25, \color{red}{0.5}, 0.25  ) & X = 2 \\\\ Multinorm(0.25, 0.25, \color{red}{0.5} ) & X = 3 \\end{array} \right.$
-.pull-left[.g[A] $\sim$ Bern $\left\[  \\begin{array}{cc} \color{red}{p} & q & q  \\\\\\ q & \color{red}{p} & q  \\\\\\ q & q & q   \\end{array}  \right]$]
+- .blue[Z]  $\small{\sim  \left\\{  \\begin{array}{cc} Multi(\color{red}{0.5}, 0.25, 0.25 ) & X = 1 \\\\ Multi(0.25, \color{red}{0.5}, 0.25  ) & X = 2 \\\\ Multi(0.25, 0.25, \color{red}{0.5} ) & X = 3 \\end{array} \right.}$]
 
 .pull-right[
-<img src="images/three_part_optimal.png" style="width: 350px;"/>
-.orange[Local ptimal power across t=1,5,10,20 ]]
+<br/>
+ .g[A] $\sim$ Bern $\left\[  \\begin{array}{cc} \color{red}{0.5} & 0.3 & 0.3  \\\\ 0.3 & \color{red}{0.5} & 0.3  \\\\ 0.3 & 0.3 & \color{red}{0.5}   \\end{array}  \right]$
+
+ <br/>
+ 
+ ]
+
+
+<br/>
+
+- .purple[Optimal] (global) power starts from .purple[56%] (44%) and reaches .purple[79%] (63%) and drops to .purple[12%] (6%).  
+
+.center[
+<img src="images/H553_power1.png" style="width: 230px;"/>
+<img src="images/H553_power10.png" style="width: 230px;"/>
+<img src="images/H553_power20.png" style="width: 230px;"/>]
+
+
+
+---
+## Three Block Simulation 1
+
+<br/>
+
+.pull-left[
+
+- [Distance in .y[X]] : For Block2 (middle block), Block1 and Block3 are all close friend and Block1 and Block3 are most different. 
+
+- [Distance in .g[A]] : Distinction between p and q are getting clear and again blurred, leading concave power function.  
+
+
+]
+
+.pull-right[
+<img src="images/H553_B.png" style="width: 230px;"/>
+<br/>
+]
+
+<br />
+.center[
+
+<img src="images/H553_A1.png" style="width: 230px;"/>
+<img src="images/H553_A10.png" style="width: 230px;"/>
+<img src="images/H553_A20.png" style="width: 230px;"/>]
 
 
 
 
 ---
 ## Three Block Simulation 2
+<br />
+
+.pull-left[
+- .y[X] $\sim$ $Multi(1/3, 1/3, 1/3)$
+
+- .blue[Z]  $\sim$  $\left\\{  \\begin{array}{cc} Multi(\color{red}{0.5}, 0.25, 0.25 ) & X = 1 \\\\ Multi(0.25, \color{red}{0.5}, 0.25  ) & X = 2 \\\\ Multi(0.25, 0.25, \color{red}{0.5} ) & X = 3 \\end{array} \right.$
+
+<br/>
+- .g[A] $\sim$ Bern $\left\[  \\begin{array}{cc} \color{red}{p} & q & q  \\\\\\ q & \color{red}{p} & q  \\\\\\ q & q & q  \\end{array}  \right]$
+
+- Difference between local optimal power and global power becomes larger. (28% in maximum when .r[p] = 0.5 and q = 0.3)
+
+]
+
+.pull-right[
+<img src="images/three_part_optimal.png" style="width: 400px;"/>
+ .orange[Local ptimal power across t=1,5,10,20 ]]
 
 
-- .y[X] $\sim$ Multinomial(1/3, 1/3, 1/3)
-- .blue[Z]  $\sim$  $\left\\{  \\begin{array}{cc} Multinorm(\color{red}{0.5}, 0.25, 0.25 ) & X = 1 \\\\ Multinorm(0.25, \color{red}{0.5}, 0.25  ) & X = 2 \\\\ Multinorm(0.25, 0.25, \color{red}{0.5} ) & X = 3 \\end{array} \right.$
-- .g[A] $\sim$ Bern $\left\[  \\begin{array}{cc} \color{red}{0.5} & 0.1 & 0.1  \\\\ 0.1 & \color{red}{0.5} & 0.1  \\\\ 0.1 & 0.1 & 0.1   \\end{array}  \right]$
+---
+## Three Block Simulation 2
+
+
+.pull-left[
+- .y[X] $\small{\sim Multi(1/3, 1/3, 1/3)}$
+
+- .blue[Z]  $\small{\sim  \left\\{  \\begin{array}{cc} Multi(\color{red}{0.5}, 0.25, 0.25 ) & X = 1 \\\\ Multi(0.25, \color{red}{0.5}, 0.25  ) & X = 2 \\\\ Multi(0.25, 0.25, \color{red}{0.5} ) & X = 3 \\end{array} \right.}$]
+
+.pull-right[
+<br/>
+ .g[A] $\sim$ Bern $\left\[  \\begin{array}{cc} \color{red}{0.5} & 0.3 & 0.3  \\\\ 0.3 & \color{red}{0.5} & 0.3  \\\\ 0.3 & 0.3 & 0.3  \\end{array}  \right]$]
+
+<br/>
+
+- .purple[Optimal] (global) power starts from .purple[43%] (15%), and reaches .purple[54%] (34%) and drops to .purple[11%] (7%).
+
 
 
 .center[
-<img src="images/REthree4_power1.png" style="width: 320px;"/>
-<img src="images/REthree4_power20.png" style="width: 320px;"/>]
+<img src="images/P553_power1.png" style="width: 230px;"/>
+<img src="images/P553_power10.png" style="width: 230px;"/>
+<img src="images/P553_power20.png" style="width: 230px;"/>]
 
 
 ---
 ## Three Block Simulation 2
 
-- Gap between local optimal and global scale is getting larger. 
-- The intuition behind it is that as diffusion process progresses, we are more likely to include block 3, of which edge distribution is randomly distributed across blocks. 
-- Optimality depends on both neighborhood choice of .g[G] and .y[X]. 
+<br/>
+
+- At t = 1, Block1 and Block2 act as one giant block because .r[p] = 0.5 is stronger than q = 0.3. 
+- At t = 10, diffusion process precieves difference between .r[p] = 0.3 and q = 0.3. Within-block and between-block probabilities are all same for Block3.
+- At t=20, propagation is almost done so it cannot tell the difference between p = 0.5 and q = 0.3.  
 
 
-.pull-left[ $\color{green}{A}$ $\sim$ Bern $\left\[  \\begin{array}{cc} \color{red}{0.5} & 0.1 & 0.1  \\\\\\ 0.1 & \color{red}{0.5} & 0.1  \\\\\\ 0.1 & 0.1 & 0.1   \\end{array}  \right]$]
-
-.right[
-<img src="images/REthree4_plot.png" style="width: 350px;"/>]
+.center[
+<img src="images/P553_A1.png" style="width: 230px;"/>
+<img src="images/P553_A10.png" style="width: 230px;"/>
+<img src="images/P553_A20.png" style="width: 230px;"/>]
 
 
 ---
 ## Three Block Simulation 3
-<br/>
 
-- .y[X] $\sim$ Multinomial(1/3, 1/3, 1/3)
-- .blue[Z]  $\sim$  $\left\\{  \\begin{array}{cc} Multinorm(\color{red}{0.5}, 0.25, 0.25 ) & X = 1 \\\\ Multinorm(0.25, \color{red}{0.5}, 0.25  ) & X = 2 \\\\ Multinorm(0.25, 0.25, \color{red}{0.5} ) & X = 3 \\end{array} \right.$
-.pull-left[.g[A] $\sim$ Bern $\left\[  \\begin{array}{cc} \color{red}{p} & q & \color{pink}{r}  \\\\\\ q & \color{red}{p} & q  \\\\\\ \color{pink}{r} & q & \color{red}{p}   \\end{array}  \right]$]
+.pull-left[
+- .y[X] $\sim$ $Multi(1/3, 1/3, 1/3)$
+
+- .blue[Z]  $\sim$  $\left\\{  \\begin{array}{cc} Multi(\color{red}{0.5}, 0.25, 0.25 ) & X = 1 \\\\ Multi(0.25, \color{red}{0.5}, 0.25  ) & X = 2 \\\\ Multi(0.25, 0.25, \color{red}{0.5} ) & X = 3 \\end{array} \right.$
+
+<br/>
+- .g[A] $\sim$ Bern $\left\[  \\begin{array}{cc} \color{red}{p} & q & \color{pink}{r}  \\\\\\ q & \color{red}{p} & q  \\\\\\ \color{pink}{r} & q & \color{red}{p}  \\end{array}  \right]$
+
+<br/>
+- Just consider $\color{pink}{r} = q + 0.1 > q,$ which is against to monotonic correlation pattern because Block1 and Block3 are most different in .y[X].
+]
 
 .pull-right[
-<img src="images/three_triple_optimal.png" style="width: 350px;"/>
-.orange[Local ptimal power across t=1,5,10,20 ]]
-
+<img src="images/three_triple_optimal.png" style="width: 400px;"/>
+ .orange[Local ptimal power across t=1,5,10,20 ]]
 
 ---
 ## Three Block Simulation 3
@@ -811,44 +907,40 @@ Look at the behavior of upper triangle case (?)
 ---
 ## Three Block Simulation 3
 
-<br/>
-- In some combination of (p,q,r), we can observe optimal diffusion time. 
-
 .pull-left[
-<img src="images/three_triple_time1.png" style="width: 300px;"/>]
-.pull-right[
-<img src="images/three_triple_time3.png" style="width: 300px;"/>
-]
+- .y[X] $\small{\sim Multi(1/3, 1/3, 1/3)}$
 
+- .blue[Z]  $\small{\sim  \left\\{  \\begin{array}{cc} Multi(\color{red}{0.5}, 0.25, 0.25 ) & X = 1 \\\\ Multi(0.25, \color{red}{0.5}, 0.25  ) & X = 2 \\\\ Multi(0.25, 0.25, \color{red}{0.5} ) & X = 3 \\end{array} \right.}$]
+
+.pull-right[
+<br/>
+ .g[A] $\sim$ Bern $\left\[  \\begin{array}{cc} \color{red}{0.5} & 0.2 & \color{pink}{0.3}  \\\\ 0.2 & \color{red}{0.5} & 0.2  \\\\ \color{pink}{0.3} & 0.2 & \color{red}{0.5}  \\end{array}  \right]$]
+
+<br/>
+
+- Throughout t=1 to t=10, .purple[optimal] power stays around .purple[82%], but global power increases slightly.  
+- At t=10, we have "independent zone" upto 100 neighborhoods.
+
+.center[
+<img src="images/A523_power1.png" style="width: 230px;"/>
+<img src="images/A523_power10.png" style="width: 230px;"/>
+<img src="images/A523_power20.png" style="width: 230px;"/>]
 
 
 ---
 ## Three Block Simulation 3
 
-- .y[X] $\sim$ Multinomial(1/3, 1/3, 1/3)
-- .blue[Z]  $\sim$  $\left\\{  \\begin{array}{cc} Multinorm(\color{red}{0.5}, 0.25, 0.25 ) & X = 1 \\\\ Multinorm(0.25, \color{red}{0.5}, 0.25  ) & X = 2 \\\\ Multinorm(0.25, 0.25, \color{red}{0.5} ) & X = 3 \\end{array} \right.$
-- .g[A] $\sim$ Bern $\left\[  \\begin{array}{cc} \color{red}{0.3} & 0.05 & \color{blue}{0.15}  \\\\ 0.05 & \color{red}{0.3} & 0.05  \\\\ \color{blue}{0.15} & 0.05 & \color{red}{0.3}   \\end{array}  \right]$
+<br/>
+
+- There is no significant difference in Block1 and Block3.
+
+- Including upto 100th neighborhood does not contribute to testing dependency for Block1 and Block3.  
 
 
 .center[
-<img src="images/REthree10_power1.png" style="width: 320px;"/>
-<img src="images/REthree10_power20.png" style="width: 320px;"/>]
-
-
----
-## Three Block Simulation 3
-
-<br/>
-
-- As time increases, we have "independent zone" upto 100 neighborhoods. 
-- Change in optimal power is negligible while global power increases and decreases again. 
-- Optimal scale ($k^{\star}$ $\approx$ 150, $l^{\star}$ $\approx$ 50-100) seems robust to diffusion process.  
-
-
-.pull-left[ $\color{green}{A}$ $\sim$ Bern $\left\[  \\begin{array}{cc} \color{red}{0.3} & 0.05 & \color{blue}{0.15}  \\\\\\ 0.05 & \color{red}{0.3} & 0.05  \\\\\\ \color{blue}{0.15} & 0.05 & \color{red}{0.3}   \\end{array}  \right]$]
-
-.right[
-<img src="images/REthree10_plot.png" style="width: 350px;"/>]
+<img src="images/A523_A1.png" style="width: 230px;"/>
+<img src="images/A523_A10.png" style="width: 230px;"/>
+<img src="images/A523_A20.png" style="width: 230px;"/>]
 
 
 ---
@@ -861,26 +953,13 @@ name: Implication
 ## Implication
 
 <br />
-- We do not need joint model of nodal attribute and network.
+- Unlike others' approaches, we do not need joint model of nodal attribute and network.
 
-- We do not need any prediction in dependency model.
+- Moreover, we do not need any prediction in latent model - latent structure is very likely to be detected through multiscale distance correlation or multiscale distance geometries.
 
-- Existence of clusters 
+- .r[Multiscale distance] correlation is efficient especially when some latent structures of network is correlated with its nodal attribute values but some are not. 
 
-
-
----
-## Implication
-
-<br />
-- Local optimality > Global Power
-  - When removing an edge between different blocks would improve testing power.
-  - Existence of block of which within-block edge distribution is no difference from between-block distribution.
-  - Existence of negative correlation, e.g. within-block edge probability is smaller than between-block edge probability. 
-
-- Different power across different diffusion time.
-  - When within-block edge probability is smaller than between-block edge probability. 
-  - Existence of block where a latent variable .blue[Z] has no influence on .g[A] or .y[X].
+- .r[Diffusion distance matrix] is efficient when the distribution of edge variable is sparse or there is small difference between latent structure.   
 
 
 ---
@@ -891,8 +970,10 @@ name: Implication
 
 - Use of (local) distance correlation and diffusion distance to test:
   - Independence between two networks :   $H\_{0} : f(G\_{1} \cdot G\_{2}) = f(G\_{1}) f(G\_{2})$
+
 - Independence between Networks and Attributes using multiple samples
   - e.g) Independence between brain connectivites and personality studied from independent samples.
+
 - Can be used to study hidden structure of network.
 
 - If .y[X] acts as a confounder when analyzing the effect of other intervention on network structure .g[G], or vice versa, since within some range or neighborhood choice, we can assume independence we do not have to discard all individuals (nodes). 
@@ -927,7 +1008,7 @@ name: Implication
 - Study time by time and see how much time it takes until .r[reachability] between and within block is getting similar.
 - Study the algorithms to incorporate time-dependence optimality changes. 
 
-
+- Make a comparison to other approach (latent model based) with simulation or real data.
 
 
 ---
