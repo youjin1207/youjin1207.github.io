@@ -513,7 +513,7 @@ $$P[i,j] = \frac{\mbox{ Number of edges between i and j }}{\mbox{ Degree of node
    - No matter what the starting state was, the proportion of time the chain (signal) spends in node j.
    - Inversely proportional to the likelihood that signal does not move and stay at node j.
 
-- .r[Concept] : On the journey to all other possible nodes from node i and node j, respectively, what is the chance that we stay between i and j? The bigger the chance, the smaller the distance is. 
+- .r[Concept] : On the journey of all other possible nodes between node i and node j, respectively, what is the chance that we stay between i and j? The bigger the chance, the smaller the distance is. 
 
 
 ---
@@ -551,7 +551,7 @@ name: Simulation
 
 - Test : $H\_{0}$  : f(.g[G]⋅ .y[X]) = f(.g[G]) f(.y[X]) or f(.g[A] ⋅ .y[X]) = f(.g[A]) f(.y[X])
 
-- Model : P(A | .blue[Z]) P(X | .blue[Z]) P(X)
+- Model : P(A | .blue[Z]) P(.blue[Z] | X) P(X)
 
 - Test statistic : Local Distance Correlation
   - Distance metric of .g[G]: Diffusion Distance t= 1, 5, 10, 20
